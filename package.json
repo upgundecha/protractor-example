@@ -15,5 +15,8 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/upgundecha/protractor-example.git"
+  },
+  "dependencies": {
+    "jasmine-data-provider": "^2.2.0"
   }
 }

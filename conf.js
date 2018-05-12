@@ -4,7 +4,7 @@ let SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 exports.config = {
     framework: 'jasmine',
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['spec.js',  'todo-spec.js', 'example-spec.js'],
+    specs: ['spec.js',  'todo-spec.js', 'example-spec.js', 'example-spec-ddt.js'],
     multiCapabilities: [  
       {
         browserName: 'chrome'

@@ -36,7 +36,7 @@ describe('Protractor Demo App', function () {
 
         goButton.click();
 
-        expect(latestResult.getText()).toEqual('3');
+        expect(latestResult.getText()).toEqual('3', 'Result did not match!');
     });
 
     it('should add four and six', function() {
@@ -50,7 +50,7 @@ describe('Protractor Demo App', function () {
 
     it('should read the value from an input', function() {
         firstNumber.sendKeys(1);
-        expect(firstNumber.getAttribute('value')).toEqual('1');
+        expect(firstNumber.getAttribute('value')).toEqual('1', 'Result did not match!');
     });
 
 
@@ -67,12 +67,12 @@ describe('Protractor Demo App', function () {
         add(1, 2);
         add(3, 4);
         
-        expect(history.last().getText()).toContain('1 + 2');
+        expect(history.last().getText()).toContain('1 + 2', 'Could not find the last expression');
         
-        expect(history.count()).toEqual(2);
+        expect(history.count()).toEqual(2, 'History count did not match!');
         
         add(5, 6);
 
-        expect(history.count()).toEqual(3);
+        expect(history.count()).toEqual(3, 'History count did not match!');
     });
 });
