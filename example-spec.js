@@ -1,4 +1,4 @@
-var angularHomepage = require('./AngularHomepage');
+var angularHomepage = require('./angular-home-page.js');
 
 describe('angularjs homepage', function() {
     

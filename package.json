@@ -7,5 +7,13 @@
     "test": "protractor conf.js"
   },
   "author": "Unmesh Gundecha",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "protractor-beautiful-reporter": "^1.2.1",
+    "protractor-jasmine2-html-reporter": "0.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/upgundecha/protractor-example.git"
+  }
 }
