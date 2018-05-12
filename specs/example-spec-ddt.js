@@ -1,7 +1,5 @@
 var using = require('jasmine-data-provider');
-
-var angularHomepage = require('./angular-home-page.js');
-var testData = require('./test-data.json')
+var testData = require('../testdata/names.json')
 
 describe('Angularjs homepage', function() {
     using(testData, function(inputData){
