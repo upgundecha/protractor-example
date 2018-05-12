@@ -20,4 +20,5 @@ install:
   - webdriver-manager update
 
 script:
+  - sleep 3
   - npm test
