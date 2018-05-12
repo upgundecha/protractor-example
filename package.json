@@ -2,9 +2,9 @@
   "name": "protractor-example",
   "version": "1.0.0",
   "description": "Protractor Example Project",
-  "main": "index.js",
+  "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "protractor conf.js"
   },
   "author": "Unmesh Gundecha",
   "license": "ISC"
