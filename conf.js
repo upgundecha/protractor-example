@@ -1,5 +1,5 @@
 var HtmlReporter = require('protractor-beautiful-reporter');
-// var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
+let SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 exports.config = {
     framework: 'jasmine',
@@ -9,23 +9,19 @@ exports.config = {
       {
         browserName: 'chrome'
       }],
-    
-      // Options to be passed to Jasmine-node.
-      jasmineNodeOpts: {
-        showColors: true, // Use colors in the command line report.
-      },
-    //  onPrepare: function() {
-    //   jasmine.getEnv().addReporter(
-    //     new Jasmine2HtmlReporter({
-    //       savePath: 'target/screenshots'
-    //     })
-    //   );
-    // },
+     // Options to be passed to Jasmine-node.
+    jasmineNodeOpts: {
+       showColors: true, // Use colors in the command line report.
+    },
     onPrepare: function() {
       // Add a screenshot reporter and store screenshots to `/tmp/screenshots`:
       jasmine.getEnv().addReporter(new HtmlReporter({
          baseDirectory: 'tmp/screenshots'
       }).getJasmine2Reporter());
+      jasmine.getEnv().addReporter(new SpecReporter({
+        spec: {
+          displayStacktrace: true
+        }
+      }));
    }
-    
 }                   

@@ -1,6 +1,6 @@
 var angularHomepage = require('./angular-home-page.js');
 
-describe('angularjs homepage', function() {
+describe('Angularjs homepage', function() {
     
     it('should great the named user', function(){
         browser.get('http://www.angularjs.org');

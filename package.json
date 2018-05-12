@@ -9,8 +9,8 @@
   "author": "Unmesh Gundecha",
   "license": "ISC",
   "devDependencies": {
-    "protractor-beautiful-reporter": "^1.2.1",
-    "protractor-jasmine2-html-reporter": "0.0.7"
+    "jasmine-spec-reporter": "^4.2.1",
+    "protractor-beautiful-reporter": "^1.2.1"
   },
   "repository": {
     "type": "git",

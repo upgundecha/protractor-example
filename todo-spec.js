@@ -1,4 +1,4 @@
-describe('todo list application', function() {
+describe('Todo list application', function() {
     it('should add a todo', function(){
         // navigate to the site
         browser.get('https://angularjs.org');
