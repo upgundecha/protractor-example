@@ -1,5 +1,5 @@
 describe('Protractor Demo App', function () {
-    
+
     // Iteration 1 - Simple Scenarios
     /*
     it('should have a tile', function() {
@@ -24,13 +24,13 @@ describe('Protractor Demo App', function () {
     var secondNumber = element(by.model('second'));
     var goButton = element(by.id('gobutton'));
     var latestResult = element(by.binding('latest'));
-    
 
-    beforeEach(function() {
+
+    beforeEach(function () {
         browser.get('http://juliemr.github.io/protractor-demo/');
     });
 
-    it('should add one and two', function() {
+    it('should add one and two', function () {
         firstNumber.sendKeys(1);
         secondNumber.sendKeys(2);
 
@@ -39,7 +39,7 @@ describe('Protractor Demo App', function () {
         expect(latestResult.getText()).toEqual('3', 'Result did not match!');
     });
 
-    it('should add four and six', function() {
+    it('should add four and six', function () {
         firstNumber.sendKeys(4);
         secondNumber.sendKeys(6);
 
@@ -48,7 +48,7 @@ describe('Protractor Demo App', function () {
         expect(latestResult.getText()).toEqual('10');
     });
 
-    it('should read the value from an input', function() {
+    it('should read the value from an input', function () {
         firstNumber.sendKeys(1);
         expect(firstNumber.getAttribute('value')).toEqual('1', 'Result did not match!');
     });
@@ -63,14 +63,14 @@ describe('Protractor Demo App', function () {
         goButton.click();
     }
 
-    it('should have a history', function(){
+    it('should have a history', function () {
         add(1, 2);
         add(3, 4);
-        
+
         expect(history.last().getText()).toContain('1 + 2', 'Could not find the last expression');
-        
+
         expect(history.count()).toEqual(2, 'History count did not match!');
-        
+
         add(5, 6);
 
         expect(history.count()).toEqual(3, 'History count did not match!');
