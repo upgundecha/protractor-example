@@ -1,4 +1,7 @@
+var angularHomepage = require('./AngularHomepage');
+
 describe('angularjs homepage', function() {
+    
     it('should great the named user', function(){
         browser.get('http://www.angularjs.org');
 
@@ -7,4 +10,11 @@ describe('angularjs homepage', function() {
         
         expect(greeting.getText()).toEqual('Hello Unmesh!');
     });
+1
+    // Using PageObject
+    it('should greet the named user1 - using pageobject', function() {
+        angularHomepage.get();
+        angularHomepage.setName('Julie');
+        expect(angularHomepage.getGreetingText()).toEqual('Hello Julie!');
+      });
 });
