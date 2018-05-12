@@ -17,5 +17,6 @@ install:
   - npm install
   
 script:
+  - webdriver-manager update
   - webdriver-manager start
   - npm run test
