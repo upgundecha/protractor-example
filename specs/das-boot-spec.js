@@ -52,6 +52,7 @@ describe('Das Boot Shipwrecks List', function () {
         
         var deleteButton = swList.get(0).element(by.linkText('Delete'))
         deleteButton.click();
+        browser.switchTo().alert().accept();
         
         expect(swList.count()).toEqual(0, 'Shipwrecks count did not match post delete!');
     });
