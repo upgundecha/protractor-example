@@ -51,6 +51,8 @@ describe('Das Boot Shipwrecks List', function () {
         expect(swList.get(0).getText()).toEqual('U Boat 66 German U Boat 66 2000 View Delete');
         
         var deleteButton = swList.get(0).element(by.linkText('Delete'))
+        deleteButton.click();
+        
         expect(swList.count()).toEqual(0, 'Shipwrecks count did not match post delete!');
     });
 });
