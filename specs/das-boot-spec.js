@@ -38,4 +38,19 @@ describe('Das Boot Shipwrecks List', function () {
         expect(swList.count()).toEqual(1, 'Shipwrecks count did not match!');
         expect(swList.get(0).getText()).toEqual('U Boat 66 German U Boat 66 2000 View Delete');
     });
+
+    it('should delete Shipwreck', function () {
+        browser.get('http://localhost:9999/index.html');
+        
+        var shipwrecksLink = element(by.linkText('Shipwrecks'));
+        shipwrecksLink.click();
+    
+        var swList = element.all(by.repeater('shipwreck in shipwrecks'));
+        
+        expect(swList.count()).toEqual(1, 'Shipwrecks count did not match!');
+        expect(swList.get(0).getText()).toEqual('U Boat 66 German U Boat 66 2000 View Delete');
+        
+        var deleteButton = swList.get(0).element(by.linkText('Delete'))
+        expect(swList.count()).toEqual(0, 'Shipwrecks count did not match post delete!');
+    });
 });
