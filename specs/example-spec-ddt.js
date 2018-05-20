@@ -1,6 +1,8 @@
 var using = require('jasmine-data-provider');
 var testData = require('../testdata/names.json')
 
+
+// parameterized test
 describe('Angularjs homepage', function() {
     using(testData, function(inputData){
         it(`should great the named user ${inputData.name}`, function(){
