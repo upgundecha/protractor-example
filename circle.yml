@@ -27,6 +27,7 @@ dependencies:
     - sudo tcpdump -i lo 'tcp && dst localhost' -w $CIRCLE_ARTIFACTS/localdump.pcap:
           background: true
     - sudo apt-get install maven
+    - cd ..
     - git clone https://github.com/upgundecha/das-boot.git
     - cd das-boot
     - mvn clean install
