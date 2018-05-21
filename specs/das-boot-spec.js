@@ -91,8 +91,34 @@ describe('Das Boot Shipwrecks List', function () {
         expect(latitude.getText()).toEqual(`${ship.latitude}, ${ship.longitude}`);
     });
 
+    it('should edit a record', function() {
+
+        newShipName = 'U Boat';
+
+        var shipwrecksLink = element(by.linkText('Shipwrecks'));
+        shipwrecksLink.click();
+
+        var swList = element.all(by.repeater('shipwreck in shipwrecks'));
+        
+        var viewButton = swList.first().element(by.linkText('View'))
+        viewButton.click();
+
+        var editButton = element(by.linkText('Edit'));
+        editButton.click();
+        
+        $('#name').clear();
+        $('#name').sendKeys(newShipName);
+        $("input[value='Save']").click();
+
+        var swList = element.all(by.repeater('shipwreck in shipwrecks'));
+        
+        // updated record moves to the end of the list
+        var name = swList.last().element(by.binding('shipwreck.name'));
+        expect(name.getText()).toEqual(newShipName);
+    });
+
     it('should delete a record', function () {
-        var shipwrecksLink = element(by.linkText('Shipwrecks')); ``
+        var shipwrecksLink = element(by.linkText('Shipwrecks')); 
         shipwrecksLink.click();
 
         var swList = element.all(by.repeater('shipwreck in shipwrecks'));
@@ -100,7 +126,7 @@ describe('Das Boot Shipwrecks List', function () {
         expect(swList.count()).toEqual(shipsCounter,
             'Shipwrecks count did not match!');
 
-        var deleteButton = swList.get(0).element(by.linkText('Delete'))
+        var deleteButton = swList.first().element(by.linkText('Delete'))
         deleteButton.click();
         browser.switchTo().alert().accept();
 
