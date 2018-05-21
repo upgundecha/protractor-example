@@ -1,6 +1,8 @@
 machine:
   node:
     version: 6.9.1
+  java:
+    version: oraclejdk8
   environment:
     # Fix issue with selenium-server in containers.
     # See http://github.com/SeleniumHQ/docker-selenium/issues/87
@@ -24,6 +26,7 @@ dependencies:
     # Extra tcp logging for BlockingProxy
     - sudo tcpdump -i lo 'tcp && dst localhost' -w $CIRCLE_ARTIFACTS/localdump.pcap:
           background: true
+    - sudo apt-get install maven
     - git clone https://github.com/upgundecha/das-boot.git
     - cd das-boot
     - mvn spring-boot:run:
