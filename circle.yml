@@ -10,11 +10,10 @@ dependencies:
   override:
     - npm i
     - npm install -g protractor
-  cache_directories:
-    - testapp/node_modules
+
   post:
-    - ./node_modules/.bin/webdriver-manager update
-    - ./node_modules/.bin/webdriver-manager start:
+    - webdriver-manager update
+    - webdriver-manager start:
         background: true
     - sudo apt-get update
     # Install the latest Chrome
