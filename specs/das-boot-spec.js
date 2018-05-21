@@ -21,9 +21,6 @@ describe('Das Boot Shipwrecks List', function () {
         browser.get('http://localhost:9999/index.html');
     });
 
-    // we will use this counter
-    var shipsCounter = 0;
-
     using(testData, function (inputData) {
         it(`should add a new ship > ${inputData.name}`, function () {
 
@@ -44,15 +41,15 @@ describe('Das Boot Shipwrecks List', function () {
 
             // check newly added Shipwreck
             var swList = element.all(by.repeater('shipwreck in shipwrecks'));
-            var name = swList.get(shipsCounter).element(by.binding('shipwreck.name'));
-            var description = swList.get(shipsCounter).element(by.binding('shipwreck.description'));
-            var year = swList.get(shipsCounter).element(by.binding('shipwreck.year'));
+
+            var name = swList.last().element(by.binding('shipwreck.name'));
+            var description = swList.last().element(by.binding('shipwreck.description'));
+            var year = swList.last().element(by.binding('shipwreck.year'));
 
             expect(name.getText()).toEqual(inputData.name);
             expect(description.getText()).toEqual(inputData.description);
             expect(year.getText()).toEqual(inputData.yearDiscovered);
 
-            shipsCounter++;
         });
     });
 
@@ -72,7 +69,8 @@ describe('Das Boot Shipwrecks List', function () {
         shipwrecksLink.click();
 
         var swList = element.all(by.repeater('shipwreck in shipwrecks'));
-        var viewButton = swList.get(0).element(by.linkText('View'))
+        
+        var viewButton = swList.first().element(by.linkText('View'))
         viewButton.click();
 
         var name = element.all(by.binding('shipwreck.name'));
