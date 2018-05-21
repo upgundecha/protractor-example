@@ -22,9 +22,9 @@ describe('Das Boot Shipwrecks List', function () {
     });
 
     // we will use this counter
-    var shipsCounter = 0; 
-    
-    using(testData, function(inputData){
+    var shipsCounter = 0;
+
+    using(testData, function (inputData) {
         it(`should add a new ship > ${inputData.name}`, function () {
 
             var shipwrecksLink = element(by.linkText('Shipwrecks'));
@@ -56,20 +56,55 @@ describe('Das Boot Shipwrecks List', function () {
         });
     });
 
-    it('should delete Shipwreck', function () {
-        var shipwrecksLink = element(by.linkText('Shipwrecks'));``
+    it('should view a record', function () {
+
+        var ship = {
+            name: "U Boat 66",
+            description: "German U Boat 66",
+            condition: "Fair",
+            yearDiscovered: "2000",
+            depth: "1000",
+            latitude: "49.395203",
+            longitude: "-37.302391"
+        }
+
+        var shipwrecksLink = element(by.linkText('Shipwrecks'));
         shipwrecksLink.click();
-    
+
         var swList = element.all(by.repeater('shipwreck in shipwrecks'));
-        
-        expect(swList.count()).toEqual(shipsCounter, 
+        var viewButton = swList.get(0).element(by.linkText('View'))
+        viewButton.click();
+
+        var name = element.all(by.binding('shipwreck.name'));
+        var description = element(by.binding('shipwreck.description'));
+        var condition = element(by.binding('shipwreck.condition'));
+        var year = element(by.binding('shipwreck.year'));
+        var depth = element(by.binding('shipwreck.depth'));
+        var latitude = element(by.binding('shipwreck.latitude'));
+
+        expect(name.get(0).getText()).toEqual(`Details for ${ship.name}`);
+        expect(name.get(1).getText()).toEqual(ship.name);
+        expect(description.getText()).toEqual(ship.description);
+        expect(condition.getText()).toEqual(ship.condition);
+        expect(year.getText()).toEqual(ship.yearDiscovered);
+        expect(depth.getText()).toEqual(ship.depth);
+        expect(latitude.getText()).toEqual(`${ship.latitude}, ${ship.longitude}`);
+    });
+
+    it('should delete a record', function () {
+        var shipwrecksLink = element(by.linkText('Shipwrecks')); ``
+        shipwrecksLink.click();
+
+        var swList = element.all(by.repeater('shipwreck in shipwrecks'));
+
+        expect(swList.count()).toEqual(shipsCounter,
             'Shipwrecks count did not match!');
-        
+
         var deleteButton = swList.get(0).element(by.linkText('Delete'))
         deleteButton.click();
         browser.switchTo().alert().accept();
-        
-        expect(swList.count()).toEqual(shipsCounter - 1, 
+
+        expect(swList.count()).toEqual(shipsCounter - 1,
             'Shipwrecks count did not match post delete!');
     });
 });
