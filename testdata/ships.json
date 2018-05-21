@@ -1,0 +1,29 @@
+[
+    {
+        "name": "U Boat 66",
+        "description": "German U Boat 66",
+        "condition": "Fair",
+        "yearDiscovered": "2000",
+        "depth": "1000",
+        "latitude": "49.395203",
+        "longitude": "-37.302391"
+    },
+    {
+        "name": "U-166",
+        "description": "Americal U-166",
+        "condition": "Poor",
+        "yearDiscovered": "2001",
+        "depth": "5000",
+        "latitude": "27.233084",
+        "longitude": "142.419576"
+    },
+    {
+        "name": "Angno",
+        "description": "Janapies War Ship",
+        "condition": "Good",
+        "yearDiscovered": "1995",
+        "depth": "1000",
+        "latitude": "40.328071",
+        "longitude": "148.674170"
+    }
+]
