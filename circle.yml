@@ -30,8 +30,8 @@ dependencies:
     - git clone https://github.com/upgundecha/das-boot.git
     - cd das-boot
     - mvn spring-boot:run:
-          background: true
-    - sleep 15
+        background: true
+    - sleep 25
 
 test:
   override:
