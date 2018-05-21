@@ -29,9 +29,7 @@ dependencies:
     - sudo apt-get install maven
     - cd ..
     - git clone https://github.com/upgundecha/das-boot.git
-    - cd das-boot
-    - mvn clean install
-    - mvn spring-boot:run:
+    - cd das-boot && mvn spring-boot:run:
         background: true
     - sleep 25
 
