@@ -143,17 +143,14 @@ describe('Das Boot Shipwrecks List', function () {
         // get ship list
         var swList = element.all(by.repeater('shipwreck in shipwrecks'));
 
-        // get count of ships before deleting a record
-        var shipsCounter = swList.count();
-
         var deleteButton = swList.first().element(by.linkText('Delete'))
         deleteButton.click();
         
         // pressing delete button displays confirmation alert
         browser.switchTo().alert().accept();
-
+        
         // check count of ships after deleting a record
-        expect(swList.count()).toEqual(shipsCounter - 1,
+        expect(swList.count()).toEqual(2,
             'Shipwrecks count did not match after deleting the record!');
     });
 });
