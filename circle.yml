@@ -36,3 +36,6 @@ dependencies:
 test:
   override:
     - npm test
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/output/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;

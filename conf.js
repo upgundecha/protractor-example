@@ -1,6 +1,3 @@
-var HtmlReporter = require('protractor-beautiful-reporter');
-let SpecReporter = require('jasmine-spec-reporter').SpecReporter;
-
 exports.config = {
   framework: 'jasmine',
   seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -20,6 +17,10 @@ exports.config = {
     showColors: true, // Use colors in the command line report.
   },
   onPrepare: function () {
+    var HtmlReporter = require('protractor-beautiful-reporter');
+    var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
+    var jasmineReporters = require('jasmine-reporters');
+    
     // Add a screenshot reporter and store screenshots to `/tmp/screenshots`:
     jasmine.getEnv().addReporter(new HtmlReporter({
       baseDirectory: 'tmp/screenshots',
@@ -30,5 +31,20 @@ exports.config = {
         displayStacktrace: true
       }
     }));
+
+    var junitReporter = new jasmineReporters.JUnitXmlReporter({
+
+      // setup the output path for the junit reports
+      savePath: 'output/',
+
+      // conslidate all true:
+      //   output/junitresults.xml
+      //
+      // conslidate all set to false:
+      //   output/junitresults-example1.xml
+      //   output/junitresults-example2.xml
+      consolidateAll: true
+    });
+    jasmine.getEnv().addReporter(junitReporter);
   }
 }                   
