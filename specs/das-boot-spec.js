@@ -1,18 +1,20 @@
-var angularHomepage = require('../pages/angular-home-page.js');
+var dasBootHomePage = require('../pages/das-boot-home-page.js');
 var using = require('jasmine-data-provider');
 var testData = require('../testdata/ships.json')
 
 describe('Das Boot Home Page', function () {
     it('should display Home page', function () {
-        browser.get('http://localhost:9999/index.html');
 
-        var homeLink = element(by.linkText("Home"));
-        var shipwrecksLink = element(by.linkText("Shipwrecks"));
-        var clickHereLink = element(by.linkText("Click Here! »"));
+        dasBootHomePage.get();
 
-        expect(homeLink.isPresent()).toBeTruthy('Unable to find Home Link');
-        expect(shipwrecksLink.isPresent()).toBeTruthy('Unable to find Shipwrecks Link');
-        expect(clickHereLink.isPresent()).toBeTruthy('Unable to find Click Here! » Link');
+        expect(dasBootHomePage.getHomePageLink()
+            .isPresent()).toBeTruthy('Unable to find Home Link');
+
+        expect(dasBootHomePage.getShipwrecksLink()
+            .isPresent()).toBeTruthy('Unable to find Shipwrecks Link');
+
+        expect(dasBootHomePage.getClickHereLink()
+            .isPresent()).toBeTruthy('Unable to find Click Here! » Link');
     });
 });
 
@@ -24,7 +26,7 @@ describe('Das Boot Shipwrecks List', function () {
     // use ship records from the test data file
     using(testData, function (inputData) {
         it(`should add a new ship > ${inputData.name}`, function () {
-            
+
             // go to the list page
             var shipwrecksLink = element(by.linkText('Shipwrecks'));
             shipwrecksLink.click();
@@ -43,7 +45,7 @@ describe('Das Boot Shipwrecks List', function () {
             $('#longitude').sendKeys(inputData.longitude)
             $("input[value='Save']").click();
 
-            
+
             // get ship list
             var swList = element.all(by.repeater('shipwreck in shipwrecks'));
 
@@ -69,7 +71,7 @@ describe('Das Boot Shipwrecks List', function () {
             latitude: "49.395203",
             longitude: "-37.302391"
         }
-        
+
         // go to the list page
         var shipwrecksLink = element(by.linkText('Shipwrecks'));
         shipwrecksLink.click();
@@ -80,7 +82,7 @@ describe('Das Boot Shipwrecks List', function () {
         // open first ship record
         var viewButton = swList.first().element(by.linkText('View'))
         viewButton.click();
-        
+
         // get all the fields
         // there are two name fields on the page
         var name = element.all(by.binding('shipwreck.name'));
@@ -102,7 +104,7 @@ describe('Das Boot Shipwrecks List', function () {
         expect(latitude.getText()).toEqual(`${ship.latitude}, ${ship.longitude}`);
     });
 
-    it('should edit a record', function() {
+    it('should edit a record', function () {
         newShipName = 'U Boat';
 
         // go to the list page       
@@ -111,7 +113,7 @@ describe('Das Boot Shipwrecks List', function () {
 
         // get ship list
         var swList = element.all(by.repeater('shipwreck in shipwrecks'));
-        
+
         // open first ship record
         var viewButton = swList.first().element(by.linkText('View'))
         viewButton.click();
@@ -119,7 +121,7 @@ describe('Das Boot Shipwrecks List', function () {
         // press edit button to get in to edit mode
         var editButton = element(by.linkText('Edit'));
         editButton.click();
-        
+
         // change name of the ship
         $('#name').clear();
         $('#name').sendKeys(newShipName);
@@ -127,7 +129,7 @@ describe('Das Boot Shipwrecks List', function () {
 
         // get ship list
         var swList = element.all(by.repeater('shipwreck in shipwrecks'));
-        
+
         // updated record moves to the end of the list
         var name = swList.last().element(by.binding('shipwreck.name'));
 
@@ -137,7 +139,7 @@ describe('Das Boot Shipwrecks List', function () {
 
     it('should delete a record', function () {
         // go to the list page       
-        var shipwrecksLink = element(by.linkText('Shipwrecks')); 
+        var shipwrecksLink = element(by.linkText('Shipwrecks'));
         shipwrecksLink.click();
 
         // get ship list
@@ -145,10 +147,10 @@ describe('Das Boot Shipwrecks List', function () {
 
         var deleteButton = swList.first().element(by.linkText('Delete'))
         deleteButton.click();
-        
+
         // pressing delete button displays confirmation alert
         browser.switchTo().alert().accept();
-        
+
         // check count of ships after deleting a record
         expect(swList.count()).toEqual(2,
             'Shipwrecks count did not match after deleting the record!');
