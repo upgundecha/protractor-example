@@ -39,3 +39,8 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/output/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    - mkdir -p /tmp/reports
+    - cp -a /report/. /tmp/reports
+
+  - store_artifacts:
+    path: /tmp/reports
