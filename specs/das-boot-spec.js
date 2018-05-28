@@ -62,15 +62,7 @@ describe('Das Boot Shipwrecks List', function () {
 
     it('should view a record', function () {
         // record to validate
-        var ship = {
-            name: "U Boat 66",
-            description: "German U Boat 66",
-            condition: "Fair",
-            yearDiscovered: "2000",
-            depth: "1000",
-            latitude: "49.395203",
-            longitude: "-37.302391"
-        }
+        var ship = testData[0];
 
         // go to the list page
         var shipwrecksLink = element(by.linkText('Shipwrecks'));
