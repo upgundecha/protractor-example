@@ -10,7 +10,7 @@ describe('Angularjs homepage', function () {
 
         expect(greeting.getText()).toEqual('Hello Unmesh!', 'Greeting message did not match');
     });
-    1
+    
     // Using PageObject
     it('should greet the named user - pageobject', function () {
         angularHomepage.get();

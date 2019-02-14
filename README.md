@@ -3,4 +3,3 @@ Simple Test Suite built with Protractor
 
 End-to-end for Das Boot application using Protractor & Jasmine. Includes data driven tests, reporting etc.
 Tests are run in Travis and CricleCI in headless mode
-Test
