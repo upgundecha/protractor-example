@@ -97,7 +97,7 @@ describe('Das Boot Shipwrecks List', function () {
     });
 
     it('should edit a record', function () {
-        newShipName = 'U Boat';
+        var newShipName = 'U Boat';
 
         // go to the list page       
         var shipwrecksLink = element(by.linkText('Shipwrecks'));
@@ -120,7 +120,7 @@ describe('Das Boot Shipwrecks List', function () {
         $("input[value='Save']").click();
 
         // get ship list
-        var swList = element.all(by.repeater('shipwreck in shipwrecks'));
+        swList = element.all(by.repeater('shipwreck in shipwrecks'));
 
         // updated record moves to the end of the list
         var name = swList.last().element(by.binding('shipwreck.name'));
